@@ -1,5 +1,5 @@
 <h2>Create a new poll</h2>
-<?=validation_errors();?>
+<?=validation_errors()?>
 <?=form_open('poll/create')?>
 <label title="this should be a short title" for='title'>Title:</label>
 <br />
