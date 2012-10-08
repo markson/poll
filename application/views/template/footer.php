@@ -1,4 +1,5 @@
-<strong>&copy;2012</strong>
+</div>
+<strong>&copy;Markon 2012</strong>
 </body>
 </html>
 

@@ -1,0 +1,110 @@
+a {
+	text-decoration:none;
+}
+body, html {
+	margin: 0px;
+	padding: 0px;
+}
+#column2 {
+	margin: 0 auto;
+}
+#about {
+	margin: 30px;
+	width: 600px;
+	font: normal 16px Helvetica,Arial,sans-serif;
+}
+
+#about li {
+	margin:20px;
+}
+table.borderTable {
+	border-collapse: collapse;
+	margin:25px;
+	width:600px;
+	font: normal 12px Helvetica,Arial,sans-serif;
+}
+table.borderTable td,table.borderTable th{
+	border-width:1px;
+	border-color: grey;
+	padding:5px;
+	border-style:solid;
+	font:  14px Arial,Helvetica,sans-serif;
+}
+div#login {
+	position:fixed;
+	top:5px;
+	right:5px;
+	padding:10px 20px 10px 20px;
+	background:white;
+	border:4px dashed;
+
+}
+table.borderTable caption{
+	font: bold 20px Arial,Helvetica,sans-serif;
+}
+
+#productLineSelect,#productSelect {
+	min-height:300px;
+	width:300px;
+}
+.hidden {
+	display: none;
+}
+
+table.noBorderTable {
+	margin:20px;
+}
+
+table.noBorderTable th{
+	font: bold 20px Arial,Helvetica,sans-serif;
+}
+
+table.noBorderTable th, table.noBorderTable td{
+}
+
+div#nav {
+	background: #5c5c5c;
+	padding: 20px;	
+	margin: 0px;
+}
+div#nav a.title {
+	font: bold 30px Arial,Helvetica,sans-serif;
+	color: #c2c3c4;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+}
+
+div#nav li{
+	display:inline-block;
+}
+div.popup {
+	position: absolute;
+	padding: 5px 15px 15px 15px;
+	background:white;
+	border: 1px dotted;
+}
+div#orderDate *{
+ text-align: right;
+}
+div#orderNumber *{
+	text-align: left;
+}
+button.chrome.big_dark a {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 14px;
+	color: #cbced1;
+	text-shadow: 0 -1px 0 #4d4d4d;
+}
+
+button.chrome {
+	outline:0;
+	border: 0;
+	margin: 0; 0px;
+	background: transparent; 
+	font: bold 12px Helvetica,Arial,sans-serif;
+}
+
+button.chrome.big_dark .chrome_button {
+	padding: 10px 10px 10px 10px;
+	width:130px;
+	background:	url('/assets/img/archive_header_button_bg.png') center center repeat-x transparent;
+}

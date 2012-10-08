@@ -38,7 +38,7 @@
 |
 */
 
-$route['show/(:any)'] = "index.php/poll/show/$1";
+#$route['show/(:num)'] = "poll/show/$1";
 $route['default_controller'] = "poll/show";
 $route['404_override'] = '';
 

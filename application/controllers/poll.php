@@ -3,26 +3,52 @@ class Poll extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('poll_model');
+		$this->load->helper('html');
+		$this->load->helper('url');
 	}
 	public function show($param = FALSE) {
-		$data['poll'] = $this->poll_model->get_poll($param);
-		if(empty($data['poll'])) {
-			show_404();
+		if ($param == FALSE) {
+			$data['title'] = "These are all polls";
+			$result_array = $this->poll_model->get_poll($param);
+			if(empty($result_array)) {
+				show_404();
+			}
+			foreach ($result_array as $item) {
+				$link = site_url("poll/show/{$item->id}");
+				$anchor = "<a href='$link'>{$item->title}</a>";
+				$new_array = array('anchor' => $anchor, 'title' => $item->title);
+				$data['list'][] = $new_array;
+			}
+			$this->load->view('template/header', $data);
+			$this->load->view('poll/list', $data);
+			$this->load->view('template/footer');
+		} else {
+			$data['title'] = "This is the content of $param poll";
+
+			$data['poll'] = $this->poll_model->get_poll($param);
+				if(empty($data['poll'])) {
+					show_404();
+				}
+			$this->load->view('template/header', $data);
+			$this->load->view('poll/show', $data);
+			$this->load->view('template/footer');
 		}
-		$this->load->view('template/header');
-		$this->load->view('poll/show', $data);
-		$this->load->view('template/footer');
 	}
 	public function create() {
 		$this->load->helper('form');
-		#$this->load->library('form_validation');
+		$this->load->library('form_validation');
+		$data['title'] = 'Create a poll items';
+		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('question', 'Question', 'required');
 
-		if (isset($_GET['submit']) && $_GET['submit'] == 'send') {
-			echo "this is really good";
-		} else {
-			$this->load->view('template/header');
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('template/header', $data);
 			$this->load->view('poll/create');
 			$this->load->view('template/footer');
+		} else {
+			$data['return_value'] = $this->poll_model->create_poll();
+			
+			$this->load->view('poll/success', $data);
 		}
 	}
 }
