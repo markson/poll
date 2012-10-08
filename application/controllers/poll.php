@@ -14,8 +14,7 @@ class Poll extends CI_Controller {
 				show_404();
 			}
 			foreach ($result_array as $item) {
-				$link = site_url("poll/show/{$item->id}");
-				$anchor = "<a href='$link'>{$item->title}</a>";
+				$anchor = anchor("poll/show/{$item->id}", $item->title, array('class' => 'my_link'));
 				$new_array = array('anchor' => $anchor, 'title' => $item->title);
 				$data['list'][] = $new_array;
 			}
