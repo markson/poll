@@ -18,4 +18,4 @@
 <textarea id='answer2' name='answer2'></textarea><br />
 
 <input name='submit' type='submit' value='Create poll item' />
-</form>
+<?=form_close()?>

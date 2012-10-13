@@ -10,6 +10,7 @@ class Poll extends CI_Controller {
 	}
 	public function vote($param = NULL) 
 	{
+		$this->load->helper('ip_constrain');
 		$this->form_validation->set_rules('answer_id', 'option', 'required');
 		if($this->form_validation->run() === FALSE)
 		{	
@@ -31,7 +32,8 @@ class Poll extends CI_Controller {
 		}
 	}
 
-	public function show($param = NULL){
+	public function show($param = NULL)
+	{
 		if(!empty($param))
 		{	
 			show_404();
@@ -51,21 +53,32 @@ class Poll extends CI_Controller {
 		}
 	}
 
-	public function create() {
+	public function create() 
+	{
 		$data['title'] = 'Create a poll items';
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('question', 'Question', 'required');
 
-		if ($this->form_validation->run() === FALSE) {
+		if ($this->form_validation->run() === FALSE) 
+		{
 			$this->load->view('template/header', $data);
 			$this->load->view('poll/create');
 			$this->load->view('template/footer');
-		} else {
+		} 
+		else 
+		{
 			if($this->poll_model->create_poll())
 			{
 				$this->load->view('poll/success', $data);
 			}
 		}
+	}
+	public function test()
+	{
+		$question_id = $this->poll_model->get_question_id(4);
+		$ip = "127.0.0.1";
+		$result_array = $this->poll_model->have_vote(1, $ip);
+		print_r($result_array);
 	}
 }
 ?>

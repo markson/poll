@@ -8,4 +8,4 @@
 <?php endforeach ?>
 </select>
 <input type='submit' value='vote' />
-</form>
+<?=form_close()?>

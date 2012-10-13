@@ -54,6 +54,16 @@ p {
 </style>
 </head>
 <body>
+<?php
+define('DEBUGGING', true);
+
+if (defined('DEBUGGING') && DEBUGGING) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1'); // Only if debugging!
+}
+?>
+
+
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>

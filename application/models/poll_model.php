@@ -61,5 +61,24 @@ EOD;
 		);
 		return $this->db->insert('vote', $vote);
 	}
+	public function get_question_id($answer_id) {
+		$this->db->select('question.id')->from('answer')->join('question', "answer.question_id = question.id")->where("answer.id = $answer_id");
+		$query = $this->db->get();
+		$result = $query->result();
+		return $result[0]->id;
+	}
+
+	public function have_vote($question_id, $ip) {
+		$this->db->select('question.title');
+		$this->db->from('vote');
+		$this->db->join('answer', 'vote.answer_id = answer.id');
+		$this->db->join('question', 'answer.question_id = question.id');
+		$this->db->where('question.id', $question_id);
+		$this->db->where('vote.ip', $ip);
+		$query = $this->db->get();
+		return $result = $query->result();
+		
+		#return $this->db->count_all_result();
+	}
 }
 ?>
